@@ -26,7 +26,7 @@ const PodcastPlayer = () => {
       return (
         <div className="row">
           <div className="col-md-8">
-          <img src={url+ podcastDetails.thumbnail} className="img-fluid mt-3" style={{}}/>;
+          <img src={url+ podcastDetails.thumbnail} className="img-fluid mt-3" />;
           </div>
           <div className="col-md-4">
             <div className="mt-3">

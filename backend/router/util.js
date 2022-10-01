@@ -16,4 +16,8 @@ router.post("/uploadfile", myStorage.single("myfile"), (req, res) => {
   res.status(200).json({ status: "success" });
 })
 
+router.post('/thumbnailfile', myStorage.single("myuploadfile"),(req,res)=>{
+  res.status(200).json({status: "success"});
+})
+
 module.exports = router;

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./AddPodcast.css";
 import { Formik } from "formik";
+import toast from 'react-hot-toast';
 
 const AddPodcast = () => {
 
   const [selFile, setSelFile] = useState("");
-  const [Selthumbnail, setSelthumbnail] = useState("");
+  const [selthumbnail, setSelthumbnail] = useState("");
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
 
   const loginSubmit = async (formdata, { resetForm }) => {
     formdata.file = selFile;
-    formdata.thumbnail = Selthumbnail;
+    formdata.thumbnail = selthumbnail;
 
     console.log(formdata);
 
@@ -36,13 +37,13 @@ const AddPodcast = () => {
       body: fd,
     }).then((res) => {
       if (res.status === 200) {
-        // toast.success("Image Uploaded!!", {
-        //   style: {
-        //     borderRadius: "10px",
-        //     background: "#333",
-        //     color: "#fff",
-        //   },
-        // });
+        toast.success("File Uploaded!!", {
+          style: {
+              borderRadius: "10px",
+              background: "white",
+              color: "black",
+          },
+      });
       }
     });
   };
@@ -55,17 +56,19 @@ const AddPodcast = () => {
     fetch("http://localhost:5000/util/thumbnailfile", {
       method: "POST",
       body: fd,
-    }).then((res) => {
-      if (res.status === 200) {
-        // toast.success("Image Uploaded!!", {
-        //   style: {
-        //     borderRadius: "10px",
-        //     background: "#333",
-        //     color: "#fff",
-        //   },
-        // });
+    }).then((result) => {
+      if (result.status === 200) {
+        toast.success("Thumbnail Uploaded ", {
+          style: {
+              borderRadius: "10px",
+              background: "white",
+              color: "black",
+          },
+      });
       }
-    });
+    }).catch((err)=>{
+      console.log(err);
+    })
   };
   return (
     <>
@@ -220,6 +223,6 @@ const AddPodcast = () => {
       </div>
       </>
   );
-};
+}
 
 export default AddPodcast;
