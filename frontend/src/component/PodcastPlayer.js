@@ -26,17 +26,19 @@ const PodcastPlayer = () => {
       return (
         <div className="row">
           <div className="col-md-8">
-          <img src={url+ podcastDetails.thumbnail} className="img-fluid mt-3" />;
+            <img
+              src={url + podcastDetails.thumbnail}
+              className="img-fluid mt-3"
+            />
+            ;
           </div>
           <div className="col-md-4">
             <div className="mt-3">
-              
               <h2>{podcastDetails.title}</h2>
               <p>Uploaded By : {podcastDetails.createdBy.username}</p>
               <p>{new Date(podcastDetails.createdAt).toLocaleDateString()}</p>
               {podcastPlayer()}
             </div>
-            
           </div>
         </div>
       );
@@ -45,18 +47,18 @@ const PodcastPlayer = () => {
 
   const podcastPlayer = () => {
     if (!loading) {
-      return <audio src={url + "/" + podcastDetails.file} controls style={{width:"66%",Color:"red"}}></audio>;
+      return (
+        <audio
+          src={url + "/" + podcastDetails.file}
+          controls
+          style={{ width: "66%", Color: "red" }}
+        >
+        </audio>
+      );
     }
   };
 
-  return (
-    <div>
-
-{showDetails()}
-
-      
-    </div>
-  );
+  return <div style={{backgroundColor:"rgb(98 22 208 / 51%)", height:"100vh"}}>{showDetails()}</div>;
 };
 
 export default PodcastPlayer;
